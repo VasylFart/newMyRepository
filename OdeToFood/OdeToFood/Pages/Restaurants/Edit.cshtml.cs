@@ -55,7 +55,7 @@ namespace OdeToFood.Pages.Restaurants
 
             else
             {
-                restaurantData.Add(Restaurant) // Dodać nową restauracje
+                restaurantData.Add(Restaurant); // Dodać nową restauracje
             }
             restaurantData.Commit();
             return RedirectToPage("./Detail", new { restaurantId = Restaurant.Id });  //przy aktualizuwaniu strony pod czas wpisywania nowych danych przekierowuje na inną stronę żeby nie dublować form.
