@@ -2,7 +2,7 @@
 {
     public partial class Restaurant
     {
-        public enum CuisineType
+        public enum CuisineType 
         {
             None,
             Mexikan,
