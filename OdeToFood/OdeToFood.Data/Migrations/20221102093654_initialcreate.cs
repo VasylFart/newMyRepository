@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace OdeToFood.Migrations
+namespace OdeToFood.Data.Migrations
 {
     public partial class initialcreate : Migration
     {
