@@ -4,17 +4,20 @@ using OdeToFood;
 using OdeToFood.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace OdeToFood
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
+        var builder = WebApplication.CreateBuilder(args);
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        var startup = new Startup(builder.Configuration);
+        startup.ConfigureServices(builder.Services);
+
+        var app = builder.Build();
+
+        startup.Configure(app, builder.Environment);
+
+        builder.Build();
     }
 }
+    
