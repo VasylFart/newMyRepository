@@ -4,11 +4,11 @@ namespace OdeToFood.Data
 {
     public class InMemoryRestaurantData : IRestaurantData
     {
-        List<Restaurant> _restaurants;
+        readonly List<Restaurant> restaurants;
 
         public InMemoryRestaurantData()
         {
-            _restaurants = new List<Restaurant>()
+            restaurants = new List<Restaurant>()
             {
                 new Restaurant { Id = 1, Name = "Skott`s Pizza", Lokation = "Maryland", Cuisine = CuisineType.Italian },
                 new Restaurant { Id = 2, Name = "Vasyl`s Lazania", Lokation = "Berszad", Cuisine = CuisineType.Ukraine },
@@ -16,21 +16,21 @@ namespace OdeToFood.Data
             };
         }
 
-        public Restaurant GetByID(int id)
+        public Restaurant GetById(int id)
         {
-            return _restaurants.SingleOrDefault(r => r.Id == id);
+            return restaurants.SingleOrDefault(r => r.Id == id);
         }
 
         public Restaurant Add(Restaurant newRestaurant)
         {
-            _restaurants.Add(newRestaurant);
-            newRestaurant.Id = _restaurants.Max(r => r.Id) + 1;
+            restaurants.Add(newRestaurant);
+            newRestaurant.Id = restaurants.Max(r => r.Id) + 1;
             return newRestaurant;
         }
 
         public Restaurant Update(Restaurant updatedRestaurant)
         {
-            var restaurant = _restaurants.SingleOrDefault(r => r.Id == updatedRestaurant.Id);
+            var restaurant = restaurants.SingleOrDefault(r => r.Id == updatedRestaurant.Id);
             if (restaurant != null)
             {
                 restaurant.Name = updatedRestaurant.Name;
@@ -45,9 +45,9 @@ namespace OdeToFood.Data
             return 0;
         }
 
-        public IEnumerable<Restaurant> GetResturantsByName(string name = null)
+        public IEnumerable<Restaurant> GetRestaurantsByName(string name = null)
         {
-            return from r in _restaurants
+            return from r in restaurants
                    where string.IsNullOrEmpty(name) || r.Name.StartsWith (name)
                    orderby r.Name
                    select r;
@@ -55,17 +55,17 @@ namespace OdeToFood.Data
 
         public Restaurant Delete(int id)
         {
-            var restaurant = _restaurants.FirstOrDefault(r => r.Id == id);
+            var restaurant = restaurants.FirstOrDefault(r => r.Id == id);
             if (restaurant != null)
             {
-                _restaurants.Remove(restaurant);
+                restaurants.Remove(restaurant);
             }
-            return restaurant;
+            return null;
         }
 
         public int GetCountOfRestaurants()
         {
-            return _restaurants.Count();
+            return restaurants.Count();
         }
     }
 }

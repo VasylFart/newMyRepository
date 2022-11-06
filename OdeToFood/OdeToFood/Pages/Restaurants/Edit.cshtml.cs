@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OdeToFood.Core;
 using OdeToFood.Data;
-using static OdeToFood.Core.Restaurant;
 
 namespace OdeToFood.Pages.Restaurants
 {
@@ -22,12 +21,13 @@ namespace OdeToFood.Pages.Restaurants
             this.restaurantData = restaurantData;
             this.htmlHelper = htmlHelper;
         }
+
         public IActionResult OnGet(int? restaurantId)
         {
             Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
             if (restaurantId.HasValue)
             {
-                Restaurant = restaurantData.GetByID(restaurantId.Value);
+                Restaurant = restaurantData.GetById(restaurantId.Value);
             }
             else
             {

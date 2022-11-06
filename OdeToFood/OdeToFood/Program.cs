@@ -1,15 +1,20 @@
+using Microsoft.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using OdeToFood;
 using OdeToFood.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace OdeToFood
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateWebHostBuilder(args).Build().Run();
+        }
 
-var startup = new Startup(builder.Configuration);
-startup.ConfigureServices(builder.Services);
-
-var app = builder.Build();
-
-startup.Configure(app, builder.Environment);
-
-builder.Build();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+    }
+}

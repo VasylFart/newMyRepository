@@ -25,7 +25,7 @@ namespace OdeToFood.Data
 
         public Restaurant Delete(int id)
         {
-            var restaurant = GetByID(id);
+            var restaurant = GetById(id);
             if(restaurant != null)
             {
                 db.Restaurants.Remove(restaurant);
@@ -33,7 +33,7 @@ namespace OdeToFood.Data
             return restaurant;
         }
 
-        public Restaurant GetByID(int id)
+        public Restaurant GetById(int id)
         {
             return db.Restaurants.Find(id);
         }
@@ -43,7 +43,7 @@ namespace OdeToFood.Data
             return db.Restaurants.Count();
         }
 
-        public IEnumerable<Restaurant> GetResturantsByName(string name)
+        public IEnumerable<Restaurant> GetRestaurantsByName(string name)
         {
             var query = from r in db.Restaurants
                         where r.Name.StartsWith(name) || string.IsNullOrEmpty(name)
