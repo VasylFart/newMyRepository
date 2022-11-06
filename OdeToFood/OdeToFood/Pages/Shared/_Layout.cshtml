@@ -42,12 +42,16 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <vc:restaurant-count></vc:restaurant-count>
             @RenderSection("footer", required: false)
-            &copy; 2022 - OdeToFood - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+            <p>&copy; 2018 - OdeToFood</p>
+            <img src="/OdeToFood.png" />
+        </footer>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -11,10 +11,8 @@ namespace OdeToFood.Data
 {
     public class OdeToFoodDbContext : DbContext
     {
-        public OdeToFoodDbContext(DbContextOptions<OdeToFoodDbContext> options)
-            : base(options)
+        public OdeToFoodDbContext(DbContextOptions<OdeToFoodDbContext> options) : base(options)
         {
-
         }
 
                                                                     // własciwości z danymi które chcę przechowywać w bazie danych

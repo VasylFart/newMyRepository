@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OdeToFood.Core
 {
-    public partial class Restaurant
+    public class Restaurant
     {
-
         public int Id { get; set; }
 
         [Required, StringLength(80)]             // Wymaga uzupenic pole oraz ustawia ,aksymalną ilość znaków

@@ -10,9 +10,9 @@ namespace OdeToFood.Data
         {
             _restaurants = new List<Restaurant>()
             {
-                new Restaurant { Id = 1, Name = "Skott`s Pizza", Lokation = "Maryland", Cuisine = Restaurant.CuisineType.Italian },
-                new Restaurant { Id = 2, Name = "Vasyl`s Lazania", Lokation = "Berszad", Cuisine = Restaurant.CuisineType.Ukraine },
-                new Restaurant { Id = 3, Name = "Przemek`s Burger", Lokation = "Olsztyn", Cuisine = Restaurant.CuisineType.Poland }
+                new Restaurant { Id = 1, Name = "Skott`s Pizza", Lokation = "Maryland", Cuisine = CuisineType.Italian },
+                new Restaurant { Id = 2, Name = "Vasyl`s Lazania", Lokation = "Berszad", Cuisine = CuisineType.Ukraine },
+                new Restaurant { Id = 3, Name = "Przemek`s Burger", Lokation = "Olsztyn", Cuisine = CuisineType.Poland }
             };
         }
 
@@ -61,6 +61,11 @@ namespace OdeToFood.Data
                 _restaurants.Remove(restaurant);
             }
             return restaurant;
+        }
+
+        public int GetCountOfRestaurants()
+        {
+            return _restaurants.Count();
         }
     }
 }
