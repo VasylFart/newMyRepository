@@ -24,6 +24,8 @@ namespace OdeToFood
 
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
 
+            services.AddDbContext<OdeToFoodDbContext>();
+
         }
 
 
@@ -37,6 +39,7 @@ namespace OdeToFood
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseNodeModules();
             app.UseRouting();
             app.UseAuthorization();
             app.MapRazorPages();
