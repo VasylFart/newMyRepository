@@ -8,26 +8,26 @@
 
 <table class="table" id="restaurants">
 
-
 </table>
 
 @section Scripts {
-    <environment include="Development"></environment>
-        <script src="d:\gitjunior\odetofood\odetofood\node_modules\datatables.net\js\jquery.datatables.js"></script>
-        <script src="d:\gitjunior\odetofood\odetofood\node_modules\datatables.net-dt\js\datatables.datatables.js"></script>
-        <link href="d:\gitjunior\odetofood\odetofood\node_modules\datatables.net-dt\css\jquery.datatables.css" rel="stylesheet" />
+
+    <environment include="Development">
+        <script src="~\node_modules\datatables.net\js\jquery.datatables.js"></script>
+        <script src="~\node_modules\datatables.net-dt\js\datatables.datatables.js"></script>
+        <link href="~\node_modules\datatables.net-dt\css\jquery.datatables.css" rel="stylesheet" />
+    </environment>
     <environment exclude="Development">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.css" />
-
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.js"></script>
     </environment>
     
 
     <script>
 
-        $(function (){
+        $(function () {
 
-            var cuisines = ["Unknown", "MexiKan", "Italian", "Indian", "Poland", "Ukraine"]
+             var cuisines = ["Unknown", "MexiKan", "Italian", "Indian", "Poland", "Ukraine"]
 
             $.ajax("/api/restaurants/", 
                     { method: "get"})
@@ -37,16 +37,16 @@
                         columns: [
                             { "data": "name" },
                             { "data": "location" },
-                            { "data": "cuisine", "render" : function(data){
+                            { 
+                                "data": "cuisine", "render": function (data) {
                                     return cuisines[data];
+                                }
                             }
-                            }
-
                         ]
-
                     });
             });
         });
+
 
     </script>
 }
